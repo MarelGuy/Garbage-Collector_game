@@ -82,13 +82,6 @@ export const GameData: any = {
 
   atlas: [],
 
-  script: [
-    {
-      key: "webfont",
-      path: "assets/js/webfonts.js",
-    },
-  ],
-
   bitmapfont: [
     {
       name: "arcade",
