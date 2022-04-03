@@ -1,6 +1,4 @@
 export default class GameOver extends Phaser.Scene {
-  private GameOver: Phaser.GameObjects.BitmapText;
-  private otherintro: Phaser.GameObjects.BitmapText;
   private restart: Phaser.GameObjects.BitmapText;
   private bgEnd: Phaser.GameObjects.Image;
 

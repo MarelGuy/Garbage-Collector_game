@@ -1,5 +1,5 @@
 interface IPlayer {
-  update(time: number, delta: number): void;
+  update( ): void;
 }
 
 export default IPlayer;

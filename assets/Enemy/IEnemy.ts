@@ -1,6 +1,6 @@
 interface IEnemy {
     create(): void;
-    update(time: number, delta: number): void;
+    update( ): void;
   }
   
   export default IEnemy;

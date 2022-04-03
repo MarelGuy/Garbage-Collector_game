@@ -1,18 +1,19 @@
 import Player from "../../assets/gameComponents/Player";
 import Boss from "../../assets/Enemy/Boss";
 import Sacchetto from "../../assets/gameComponents/Sacchetto";
+import Fiamma from "../../assets/gameComponents/Fiamma";
 
 export default class GamePlay2 extends Phaser.Scene {
   private _level: number = 2;
   private _bossMap: Phaser.GameObjects.Image;
-  private _player: Player;
-  // private _boss: any;
+  public _player: Player;
   private _boss: Boss;
   private _bossGroup: Phaser.GameObjects.Group;
   private _bagGroup: Phaser.GameObjects.Group;
   private base: any;
   private vitaBoss: number = 10;
   private _platform: any;
+  private _fireballGroup: Phaser.GameObjects.Group;
 
   constructor() {
     super({ key: "GamePlay2" });
@@ -29,6 +30,7 @@ export default class GamePlay2 extends Phaser.Scene {
     this._level = 2;
     this._bagGroup = this.add.group({ runChildUpdate: true });
     this._bossGroup = this.add.group({ runChildUpdate: true });
+    this._fireballGroup = this.add.group({ runChildUpdate: true });
 
     this._player = new Player({
       scene: this,
@@ -80,6 +82,21 @@ export default class GamePlay2 extends Phaser.Scene {
       .setScale(0);
     this._platform
       .create(this.game.canvas.width + 43, 470, "platform")
+      .setScale(0);
+    this._platform
+      .create(this.game.canvas.width + 44, 470, "platform")
+      .setScale(0);
+    this._platform
+      .create(this.game.canvas.width + 45, 470, "platform")
+      .setScale(0);
+    this._platform
+      .create(this.game.canvas.width + 46, 470, "platform")
+      .setScale(0);
+    this._platform
+      .create(this.game.canvas.width + 47, 470, "platform")
+      .setScale(0);
+    this._platform
+      .create(this.game.canvas.width + 48, 470, "platform")
       .setScale(0);
 
     this.physics.add.collider(this.base, this._player);
@@ -152,6 +169,10 @@ export default class GamePlay2 extends Phaser.Scene {
     this.events.emit("update-score", [1]);
   }
 
+  async hitPlayer() {
+    this.scene.start("GameOver");
+  }
+
   async shoot() {
     this.events.emit("decrease-score", [1]);
   }
@@ -160,6 +181,14 @@ export default class GamePlay2 extends Phaser.Scene {
     this.scene.start("GameOver");
     this.scene.stop("GamePlay2");
     this.scene.stop("Hud");
+  }
+
+  async addFireball(fireball: Fiamma) {
+    this._fireballGroup.add(fireball);
+  }
+
+  async removeFireball(fireball: Fiamma) {
+    this._fireballGroup.remove(fireball, true, true);
   }
 
   async update() {

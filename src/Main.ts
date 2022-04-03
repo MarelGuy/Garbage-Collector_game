@@ -37,7 +37,7 @@ window.addEventListener("load", () => {
       default: "arcade",
       arcade: {
         gravity: { y: 1400 },
-        debug: false,
+        debug: true,
       },
     },
     input: {

@@ -1,5 +1,5 @@
 interface IFiamma {
-  update(time: number, delta: number): void;
+  update( ): void;
 }
 
 export default IFiamma;

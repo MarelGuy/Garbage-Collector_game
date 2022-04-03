@@ -78,6 +78,7 @@ export const GameData: any = {
     { name: "stage2", path: "assets/images/stage2.png" },
     { name: "bgover", path: "assets/images/bgover.png" },
     { name: "winbg", path: "assets/images/win.png" },
+    { name: "fireball", path: "assets/images/fireball.png" },
   ],
 
   atlas: [],

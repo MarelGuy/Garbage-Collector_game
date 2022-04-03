@@ -1,4 +1,5 @@
-import GamePlay from "../../scenes/GamePlay";
+import GamePlay from "../../src/scenes/GamePlay";
+import { genericConfig } from "../../src/Types";
 import Enemy from "./Enemy";
 import IEnemy from "./IEnemy";
 
@@ -21,5 +22,5 @@ export default class Cestino extends Enemy implements IEnemy {
     this._scene.add.existing(this);
   }
 
-  async update(time: number, delta: number) {}
+  async update( ) {}
 }

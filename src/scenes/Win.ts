@@ -1,6 +1,5 @@
 export default class Win extends Phaser.Scene {
   private Win: Phaser.GameObjects.BitmapText;
-  private otherintro: Phaser.GameObjects.BitmapText;
   private restart: Phaser.GameObjects.BitmapText;
   private bgEnd: Phaser.GameObjects.Image;
 

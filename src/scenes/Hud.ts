@@ -41,6 +41,8 @@ export default class Hud extends Phaser.Scene {
     this.gamePlay2.events.on("update-score", this.updateScore, this);
     this.gamePlay2.events.off("decrease-score", this.decreaseScore, this);
     this.gamePlay2.events.on("decrease-score", this.decreaseScore, this);
+    this.gamePlay.events.off("increase-level", this.increaseLevel, this);
+    this.gamePlay.events.on("increase-level", this.increaseLevel, this);
     this.score = 0;
     this.proiettili = 15;
     this.registry.set("score", this.score);
@@ -59,17 +61,23 @@ export default class Hud extends Phaser.Scene {
       .setOrigin(0);
   }
 
+  async isLevelOneCheck(isLevelOne: boolean): Promise<boolean> {
+    return isLevelOne
+  }
+
   async update() {
     function delay(ms: number) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
-    if (this.score == 10) {
-      if (this.level == 1) {
+    if (this.level == 1) {
+      if (this.score == 10) {
         delay(1000).then(() => {
           this.win();
         });
-      } else {
+      }
+    } else if (this.level == 2) {
+      if (this.score == 15) {
         delay(1000).then(() => {
           this.gameWin();
         });
@@ -91,6 +99,10 @@ export default class Hud extends Phaser.Scene {
     this.score += parameters[0];
     this.scoreText.setText(this.score + "");
     this.registry.set("score", this.score);
+  }
+
+  private async increaseLevel() {
+    this.level++
   }
 
   private async gameOver() {

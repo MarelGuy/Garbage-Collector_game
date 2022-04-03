@@ -1,4 +1,5 @@
-import GamePlay from "../../scenes/GamePlay";
+import GamePlay from "../../src/scenes/GamePlay";
+import { genericConfig } from "../../src/Types";
 import IPlayer from "./IPlayer";
 import Sacchetto from "./Sacchetto";
 

@@ -1,16 +1,18 @@
 import Player from "../../assets/gameComponents/Player";
 import Cestino from "../../assets/Enemy/Cestino";
 import Sacchetto from "../../assets/gameComponents/Sacchetto";
+import Hud from "./Hud";
+
 export default class GamePlay extends Phaser.Scene {
   private _level: number = 1;
   private _city: Phaser.GameObjects.Image;
-  private _player: Player;
+  public _player: Player;
   private _enemyGroup: Phaser.GameObjects.Group;
   private _bagGroup: Phaser.GameObjects.Group;
   private base: any;
   private _platform: any;
-  private _contatore: any;
   private _enemy: any;
+  private _hud: Hud;
 
   constructor() {
     super({ key: "GamePlay" });
@@ -112,7 +114,6 @@ export default class GamePlay extends Phaser.Scene {
   }
 
   async removeEnemy(enemy: Cestino) {
-    this._contatore++;
     this._enemy.remove(enemy, true, true);
   }
 
@@ -126,6 +127,7 @@ export default class GamePlay extends Phaser.Scene {
     this.scene.stop("GamePlay");
     this.scene.start("Hud");
     this.scene.start("Win");
+    this.events.emit("increase-level", [1]);
   }
 
   async shoot() {
@@ -140,8 +142,5 @@ export default class GamePlay extends Phaser.Scene {
 
   async update() {
     this._player.update();
-    // if (this._contatore == 10) {
-    //   this.nextLevel();
-    // }
   }
 }

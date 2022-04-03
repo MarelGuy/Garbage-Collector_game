@@ -1,4 +1,5 @@
-import GamePlay from "../../scenes/GamePlay";
+import GamePlay from "../../src/scenes/GamePlay";
+import { genericConfig } from "../../src/Types";
 import IEnemy from "./IEnemy";
 
 export default class Enemy extends Phaser.GameObjects.Sprite implements IEnemy{
@@ -8,5 +9,5 @@ export default class Enemy extends Phaser.GameObjects.Sprite implements IEnemy{
 
     async create() {}
 
-    async update(time: number, delta: number) {}
+    async update( ) {}
 }
